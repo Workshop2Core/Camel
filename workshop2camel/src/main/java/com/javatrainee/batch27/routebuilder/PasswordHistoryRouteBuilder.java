@@ -9,7 +9,7 @@ public class PasswordHistoryRouteBuilder extends CamelRouteBuilder {
 
 	@Override
 	public void configure() throws Exception {
-		String mapping = "workshop2/pwdHistory";
+		String mapping = "/workshop2/pwdHistory";
 		
 		/*findByIdPass*/
 		from ("restlet:http://" + camelIp + ":" + camelPort + mapping +  "/findByIdPass/{iduser}/{password}")

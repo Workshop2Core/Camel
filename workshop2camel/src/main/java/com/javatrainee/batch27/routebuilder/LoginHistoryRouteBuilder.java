@@ -8,7 +8,7 @@ import org.springframework.stereotype.Component;
 public class LoginHistoryRouteBuilder extends CamelRouteBuilder {
 	@Override
 	public void configure() throws Exception {
-		String mapping = "workshop2/loginHistory";
+		String mapping = "/workshop2/loginHistory";
 		
 		/*findLoginHistoryByIdUser*/
 		from ("restlet:http://" + camelIp + ":" + camelPort + mapping +  "/findLoginHistoryByIdUser/{userid}")

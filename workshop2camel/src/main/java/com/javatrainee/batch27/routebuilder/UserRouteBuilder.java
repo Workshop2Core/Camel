@@ -10,7 +10,7 @@ public class UserRouteBuilder extends CamelRouteBuilder {
 	@Override
 	public void configure() throws Exception {
 		
-		String mapping = "workshop2/User";
+		String mapping = "/workshop2/User";
 		
 		/*Get All*/
 		from ("restlet:http://" + camelIp + ":" + camelPort + mapping +  "/getall")
