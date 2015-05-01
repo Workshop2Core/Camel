@@ -5,14 +5,18 @@ import org.apache.camel.Processor;
 import org.springframework.stereotype.Component;
 
 @Component
-public class LoginHistoryRouteBuilder extends CamelRouteBuilder {
+public class OrderHistoryRouteBuilder extends CamelRouteBuilder  {
 	@Override
 	public void configure() throws Exception {
-		String mapping = "/workshop2/loginHistory";
+		String mapping = "/workshop2/orderHistory";
 		
-		/*Delete*/
-		from ("restlet:http://" + camelIp + ":" + camelPort + mapping +  "/delete/{userId}?restletMethod=DELETE")
-		.to("restlet:http://" + springCoreIp + ":" + springCorePort + mapping +  "/delete/{userId}?restletMethod=DELETE");
+		/*Get All*/
+		from ("restlet:http://" + camelIp + ":" + camelPort + mapping +  "/getAll")
+		.to("restlet:http://" + springCoreIp + ":" + springCorePort + mapping +  "/getAll");
+		
+		/*find Order History By OrderId*/
+		from ("restlet:http://" + camelIp + ":" + camelPort + mapping +  "/findOrderHistoryByOrderId/{orderId}")
+		.to("restlet:http://" + springCoreIp + ":" + springCorePort + mapping +  "/findOrderHistoryByOrderId/{orderId}");
 				
 		/*Insert*/
 		from ("restlet:http://" + camelIp + ":" + camelPort + mapping +  "/insert?restletMethod=POST")
