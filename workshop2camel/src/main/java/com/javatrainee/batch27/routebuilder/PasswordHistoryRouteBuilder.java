@@ -14,11 +14,7 @@ public class PasswordHistoryRouteBuilder extends CamelRouteBuilder {
 		/*findByIdPass*/
 		from ("restlet:http://" + camelIp + ":" + camelPort + mapping +  "/findByIdPass/{iduser}/{password}")
 		.to("restlet:http://" + springCoreIp + ":" + springCorePort + mapping +  "/findByIdPass/{iduser}/{password}");
-		
-		/*Get By Id*/
-		from ("restlet:http://" + camelIp + ":" + camelPort + mapping +  "/get/{idUser}")
-		.to("restlet:http://" + springCoreIp + ":" + springCorePort + mapping +  "/get/{idUser}");
-		
+
 		/*Insert*/
 		from ("restlet:http://" + camelIp + ":" + camelPort + mapping +  "/insert?restletMethod=POST")
 		.process(new Processor() {                          
