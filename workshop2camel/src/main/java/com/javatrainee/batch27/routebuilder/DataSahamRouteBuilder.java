@@ -29,7 +29,7 @@ public class DataSahamRouteBuilder extends CamelRouteBuilder   {
 		.to("restlet:http://" + springCoreIp + ":" + springCorePort + mapping +  "/insert?restletMethod=POST");
 		
 		/*Update*/
-		from ("restlet:http://" + camelIp + ":" + camelPort + mapping +  "/update?restletMethod=PUT")
+		from ("restlet:http://" + camelIp + ":" + camelPort + mapping +  "/update/{idDataSaham}?restletMethod=PUT")
 		.process(new Processor() {                          
             @Override
             public void process(Exchange exchange) throws Exception {
@@ -38,7 +38,7 @@ public class DataSahamRouteBuilder extends CamelRouteBuilder   {
                 exchange.getOut().setBody(exchange.getIn().getBody());
             }
         })
-		.to("restlet:http://" + springCoreIp + ":" + springCorePort + mapping +  "/update?restletMethod=PUT");
+		.to("restlet:http://" + springCoreIp + ":" + springCorePort + mapping +  "/update/{idDataSaham}?restletMethod=PUT");
 	
 	}
 }
