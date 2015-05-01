@@ -18,6 +18,10 @@ public class OrderHistoryRouteBuilder extends CamelRouteBuilder  {
 		from ("restlet:http://" + camelIp + ":" + camelPort + mapping +  "/getOrderHistoryByOrderId/{orderId}")
 		.to("restlet:http://" + springCoreIp + ":" + springCorePort + mapping +  "/getOrderHistoryByOrderId/{orderId}");
 				
+		/*find Floor Data By Id Saham*/
+		from ("restlet:http://" + camelIp + ":" + camelPort + mapping +  "/getAllDataFloor/{idSaham}")
+		.to("restlet:http://" + springCoreIp + ":" + springCorePort + mapping +  "/getAllDataFloor/{idSaham}");
+					
 		/*Insert*/
 		from ("restlet:http://" + camelIp + ":" + camelPort + mapping +  "/insert?restletMethod=POST")
 		.process(new Processor() {                          
